@@ -1,0 +1,193 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "analiseatendimentos270",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "tags": {
+            "keywords": []
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZA_270_FE_ATENDIMENTO_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZA_270_FE_ATENDIMENTO_CDS_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZA_270_FE_ATENDIMENTO_CDS_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZA_270_FE_ATENDIMENTO_CDS_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZA_270_FE_ATENDIMENTO_CDS_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "offline": false,
+        "sourceTemplate": {
+            "id": "ui5template.smartTemplate",
+            "version": "1.40.12"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.96.0",
+            "libs": {
+                "sap.ui.core": {
+                    "lazy": false
+                },
+                "sap.ui.generic.app": {
+                    "lazy": false
+                },
+                "sap.suite.ui.generic.template": {
+                    "lazy": false
+                }
+            },
+            "components": {}
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties",
+                "preload": false
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "i18n|sap.suite.ui.generic.template.ListReport|ZA_270_FE_ATENDIMENTO": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/ListReport/ZA_270_FE_ATENDIMENTO/i18n.properties"
+            },
+            "i18n|sap.suite.ui.generic.template.ObjectPage|ZA_270_FE_ATENDIMENTO": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/ObjectPage/ZA_270_FE_ATENDIMENTO/i18n.properties"
+            },
+            
+            "i18n|sap.suite.ui.generic.template.ObjectPage|Z270_PET_CLIENTE": {
+              "type": "sap.ui.model.resource.ResourceModel",
+              "uri": "i18n/ObjectPage/Z270_PET_CLIENTE/i18n.properties"
+            },
+            
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {}
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "AnalyticalListPage|ZA_270_FE_ATENDIMENTO": {
+                "entitySet": "ZA_270_FE_ATENDIMENTO",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.AnalyticalListPage",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "showGoButtonOnFilterBar": true,
+                        "tableType": "AnalyticalTable",
+                        "autoHide": true,
+                        "smartVariantManagement": false,
+                        "tableSettings": {
+                            "multiSelect": false
+                        },
+                        "keyPerformanceIndicators": {}
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ZA_270_FE_ATENDIMENTO": {
+                        "entitySet": "ZA_270_FE_ATENDIMENTO",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        }
+                        ,
+                        "pages": {
+                          "ObjectPage|to_Cliente":{
+                            "navigationProperty": "to_Cliente",
+                            "entitySet": "Z270_PET_CLIENTE",
+                            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                            "component": {
+                              "name": "sap.suite.ui.generic.template.ObjectPage"
+                            }
+                          }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": ""
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.platform.hcp": {
+        "uri": ""
+    }
+}
